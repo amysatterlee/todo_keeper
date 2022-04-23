@@ -1,0 +1,69 @@
+#list-container {
+    width: 95%;
+    margin: auto;
+    padding: 1em;
+    margin-top: 2em;
+}
+
+h2 {
+    color: blueviolet;
+    border-bottom: solid 2px blueviolet;
+    padding: .5em 0;
+}
+
+.to-do {
+    width: 100%;
+    padding: .5em;
+    border: none;
+    font-size: 1em;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+input.to-do {
+    border-bottom: solid 1px lightgrey;
+}
+
+input.to-do:focus-visible {
+    outline: none;
+    border-bottom: solid 1px blueviolet;
+}
+
+.to-do .bullet {
+    margin-right: .5em;
+}
+
+.to-do .text {
+    flex: 1;
+}
+
+.icon-button {
+    border: none;
+    box-shadow: none;
+    background: transparent;
+    margin: .5em;
+}
+
+.icon-button:hover {
+    cursor: pointer;
+    color: blueviolet;
+}
+
+@media only screen and (min-width: 700px) {
+    #list-container {
+        width: 80%;
+    }
+}
+
+@media only screen and (min-width: 1000px) {
+    #list-container {
+        width: 70%;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    #list-container {
+        width: 60%;
+    }
+}

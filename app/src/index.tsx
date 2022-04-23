@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Main from './main/Main';
+import Main from './components/Main';
+import './styles.css';
 
 const App = () => {
 
-  return <Main type='complex'/>;
+  return <Main />;
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
