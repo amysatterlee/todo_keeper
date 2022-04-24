@@ -1,9 +1,10 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useEffect } from 'react';
 import { ToDoReducer, initialState } from '../state/reducers/to-do-reducer';
 import ToDoList from './ToDoList';
 
 const Main = () => {
     const [state, dispatch] = useReducer(ToDoReducer, initialState);
+
     const addToDo = (value: string) => {
         dispatch({ type: 'add', payload: value });
     }
@@ -13,12 +14,20 @@ const Main = () => {
     const toggleDone = (id: string) => {
         dispatch({ type: 'toggle', payload: id });
     }
+    const togglePersist = () => {
+        dispatch({ type: 'persist', payload: !state.persist })
+    }
+    useEffect(() => {
+        dispatch({ type: 'fetch' });
+    }, []);
     return (
         <ToDoList
             todos={state.todos}
             handleAdd={addToDo}
             handleDelete={deleteToDo}
             toggleDone={toggleDone}
+            togglePersist={togglePersist}
+            persist={state.persist}
         />
     )
 }
