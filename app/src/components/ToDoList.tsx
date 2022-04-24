@@ -5,12 +5,16 @@ import ToDoItem from './ToDoItem';
 interface Props {
     todos: ToDo[];
     handleAdd: (value: string) => void;
-    handleUpdate: (todo: ToDo) => void;
     handleDelete: (id: string) => void;
+    toggleDone: (id: string) => void;
 }
 
-const ToDoList = ({ todos, handleAdd, handleUpdate, handleDelete }: Props) => {
+const ToDoList = ({ todos, handleAdd, handleDelete, toggleDone }: Props) => {
     const placeholder = todos.length > 0 ? 'Type your next to do...' : 'Type your first to do...';
+    const generateActions = (todo: ToDo) => [
+        { label: 'Delete', onClick: () => handleDelete(todo.id) },
+        { label: `${todo.done ? 'Revert' : 'Mark Done'}`, onClick: () => toggleDone(todo.id) }
+    ];
     
     return (
         <div id='list-container'>
@@ -21,8 +25,8 @@ const ToDoList = ({ todos, handleAdd, handleUpdate, handleDelete }: Props) => {
                     placeholder=''
                     initialValue={todo.item}
                     editing={false}
-                    handleSubmit={(val) => handleUpdate({ ...todo, item: val })}
-                    handleDelete={() => handleDelete(todo.id)}
+                    actions={generateActions(todo)}
+                    complete={todo.done}
                 />
             ))}
             <ToDoItem
@@ -30,6 +34,7 @@ const ToDoList = ({ todos, handleAdd, handleUpdate, handleDelete }: Props) => {
                 initialValue=''
                 editing={true}
                 handleSubmit={handleAdd}
+                complete={false}
             />
         </div>
     );

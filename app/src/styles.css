@@ -32,6 +32,12 @@ input.to-do:focus-visible {
 
 .to-do .bullet {
     margin-right: .5em;
+    font-size: 1.5em;
+}
+
+.to-do.done {
+    color: green;
+    text-decoration: line-through;
 }
 
 .to-do .text {
@@ -48,6 +54,32 @@ input.to-do:focus-visible {
 .icon-button:hover {
     cursor: pointer;
     color: blueviolet;
+}
+
+.item-dropdown {
+    padding: .75em;
+    border: solid 1px blueviolet;
+    width: fit-content;
+    position: absolute;
+    z-index: 10;
+    background: white;
+}
+
+.item-dropdown .action-item {
+    margin: .75em 0;
+    border-bottom: solid 1px lightgrey;
+}
+
+.item-dropdown .action-item:hover {
+    cursor: pointer;
+}
+
+.transparent-film {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 5;
 }
 
 @media only screen and (min-width: 700px) {
